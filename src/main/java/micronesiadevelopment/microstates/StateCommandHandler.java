@@ -24,15 +24,20 @@ public class StateCommandHandler implements CommandExecutor {
         else if(args[0].equals("create")){
             if(!args[1].isEmpty() && !args[2].isEmpty()){
                 //Create Stuff. I guess. I dont fucking know.
-                String state_name = args[1];
-                Player owner = Bukkit.getPlayerExact(args[2]);
-                State newstate = new State();
+            	String state_name = args[1];
+            	State newstate = new State();
+            	
+            	if (!State.stateExsistsOnDisk(state_name)) {
+                    Player owner = Bukkit.getPlayerExact(args[2]);
 
-                //Hehe lets get this boi going. This sets up some values that needs to be set.
-                newstate.setOwner(owner);
-                newstate.changeName(state_name);
-                newstate.setUpState();
-
+                    //Hehe lets get this boi going. This sets up some values that needs to be set.
+                    newstate.setOwner(owner.getUniqueId());
+                    newstate.changeName(state_name);
+                    newstate.setUpState();
+            	} else {
+            		newstate.getFromFile(state_name);
+            	}
+                newstate.save();
 
             }
         }
