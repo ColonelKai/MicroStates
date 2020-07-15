@@ -17,8 +17,14 @@ public class State {
     private List<Player> citizen_list = new ArrayList<Player>();
     private List<Player> mod_list = new ArrayList<Player>();
 
-    // --- CITIZEN/MOD LIST ADD/REMOVE GET FUNCTIONS
+    // always pass this when you create a state. Dont forget this. Retard. You are a retard if you forget.
+    public boolean setUpState(){
+        balance = 0;
+        return true;
+    }
 
+    // --- CITIZEN/MOD LIST ADD/REMOVE GET FUNCTIONS
+    // there probably is a cleaner way to do these, but hey, fuck you, future me.
     public boolean addCitizen(Player player) { //add player to citizen
         if(citizen_list.contains(player)){return false;} //if already part, return false.
         else{citizen_list.add(player); return true;} // if not, add and return true.
