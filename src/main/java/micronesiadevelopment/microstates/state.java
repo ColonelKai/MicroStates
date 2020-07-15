@@ -1,7 +1,8 @@
 package micronesiadevelopment.microstates;
 
-public class state {
-    String name;
-    int id;
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class state extends JavaPlugin {
+
 
 }

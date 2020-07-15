@@ -9,3 +9,6 @@ softdepend: [QualityArmory]
 authors: [ColonelKai]
 description: A plugin that helps you create and manage States, with their capitals. Citizens, Police, and more!
 website: microstates.aquatis.io
+commands:
+  state:
+    description: Your general command to manage states.
