@@ -163,6 +163,7 @@ public class State {
     public void save() {
     	
     	MicroStates.getInstance().Data.set((String) this.getData().get(0), this.getData());
+	MicroStates.getInstance().Data.SaveDataFile();
     }
 
 }
