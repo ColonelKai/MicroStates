@@ -12,3 +12,4 @@ website: microstates.aquatis.io
 commands:
   state:
     description: Your general command to manage states.
+    permission:
