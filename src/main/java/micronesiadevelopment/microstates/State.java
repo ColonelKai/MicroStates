@@ -5,18 +5,17 @@ import org.bukkit.Bukkit;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class State {
 
     //some variables for later, i guess, i have no idea what im doing.
     private String name;
     private String full_name;
-    private UUID owner;
+    private String owner;
     private double balance;
     private int id;
-    private List<UUID> citizen_list = new ArrayList<UUID>();
-    private List<UUID> mod_list = new ArrayList<UUID>();
+    private List<String> citizen_list = new ArrayList<String>();
+    private List<String> mod_list = new ArrayList<String>();
     private List<String> citizen_name_list = new ArrayList<String>();
     private List<String> mod_name_list = new ArrayList<String>();
     private String owner_name;
@@ -29,11 +28,11 @@ public class State {
 		List<Object> dataArray = (List<Object>) MicroStates.getInstance().Data.getList(stateName);
     	name = (String) dataArray.get(0);
     	full_name = (String) dataArray.get(1);
-    	owner = (UUID) dataArray.get(2);
+    	owner = (String) dataArray.get(2);
     	balance = (double) dataArray.get(3);
     	id = (int) dataArray.get(4);
-    	citizen_list = (List<UUID>) dataArray.get(5);
-    	mod_list = (List<UUID>) dataArray.get(6);
+    	citizen_list = (List<String>) dataArray.get(5);
+    	mod_list = (List<String>) dataArray.get(6);
     	citizen_name_list = (List<String>) dataArray.get(7);
     	mod_name_list = (List<String>) dataArray.get(8);
     	owner_name = (String) dataArray.get(9);
@@ -44,11 +43,11 @@ public class State {
 		List<Object> dataArray = (List<Object>) MicroStates.getInstance().Data.getList(stateName);
     	name = (String) dataArray.get(0);
     	full_name = (String) dataArray.get(1);
-    	owner = (UUID) dataArray.get(2);
+    	owner = (String) dataArray.get(2);
     	balance = (double) dataArray.get(3);
     	id = (int) dataArray.get(4);
-    	citizen_list = (List<UUID>) dataArray.get(5);
-    	mod_list = (List<UUID>) dataArray.get(6);
+    	citizen_list = (List<String>) dataArray.get(5);
+    	mod_list = (List<String>) dataArray.get(6);
         citizen_name_list = (List<String>) dataArray.get(7);
         mod_name_list = (List<String>) dataArray.get(8);
         owner_name = (String) dataArray.get(9);
@@ -57,11 +56,11 @@ public class State {
     public void getFromFile(List<Object> dataArray) {
     	name = (String) dataArray.get(1);
     	full_name = (String) dataArray.get(2);
-    	owner = (UUID) dataArray.get(3);
+    	owner = (String) dataArray.get(3);
     	balance = (double) dataArray.get(4);
     	id = (int) dataArray.get(5);
-    	citizen_list = (List<UUID>) dataArray.get(6);
-    	mod_list = (List<UUID>) dataArray.get(7);
+    	citizen_list = (List<String>) dataArray.get(6);
+    	mod_list = (List<String>) dataArray.get(7);
         citizen_name_list = (List<String>) dataArray.get(7);
         mod_name_list = (List<String>) dataArray.get(8);
         owner_name = (String) dataArray.get(9);
@@ -76,40 +75,40 @@ public class State {
 
     // --- CITIZEN/MOD LIST ADD/REMOVE GET FUNCTIONS
     // there probably is a cleaner way to do these, but hey, fuck you, future me.
-    public boolean addCitizen(UUID playerid) { //add player to citizen
+    public boolean addCitizen(String playerid) { //add player to citizen
         if(citizen_list.contains(playerid)){return false;} //if already part, return false.
         else{citizen_list.add(playerid); citizen_name_list.add(Bukkit.getPlayer(playerid).getDisplayName()); return true;} // if not, add and return true.
     }
 
-    public boolean removeCitizen(UUID playerid) { //remove player from citizen
+    public boolean removeCitizen(String playerid) { //remove player from citizen
         if (citizen_list.contains(playerid)) {
             citizen_list.remove(playerid); citizen_name_list.remove(Bukkit.getPlayer(playerid).getDisplayName()); return true;} //if part of it, remove and return true
         else {return false;} //if not part, return false
     }
 
-    public List<UUID> getCitizenList(){return citizen_list;} //just give my boy the citizen list.
+    public List<String> getCitizenList(){return citizen_list;} //just give my boy the citizen list.
 
     public List<String> getCitizenNameList(){return citizen_name_list;}
 
-    public boolean addMod(UUID playerid) { //add player to mod
+    public boolean addMod(String playerid) { //add player to mod
         if(mod_list.contains(playerid)){return false;} //if already part, return false.
         else{mod_list.add(playerid); mod_name_list.add(Bukkit.getPlayer(playerid).getDisplayName()); return true;} // if not, add and return true.
     }
 
-    public boolean removeMod(UUID playerid) { //remove player from mod
+    public boolean removeMod(String playerid) { //remove player from mod
         if (mod_list.contains(playerid)) {
             mod_list.remove(playerid); mod_name_list.remove(Bukkit.getPlayer(playerid).getDisplayName()); return true;} //if part of it, remove and return true
         else {return false;} //if not part, return false
     }
 
-    public List<UUID> getModList(){return mod_list;} //just give my boy the mod list.
+    public List<String> getModList(){return mod_list;} //just give my boy the mod list.
 
     public List<String> getModNameList() {
         return mod_name_list;
     }
 
     //owner shit i guess idk
-    public boolean setOwner(UUID playerid){
+    public boolean setOwner(String playerid){
         if(owner == playerid){
             return false;
         }
@@ -120,7 +119,7 @@ public class State {
         }
     }
 
-    public UUID getOwner(){
+    public String getOwner(){
         return owner;
     }
 
