@@ -1,15 +1,9 @@
 package micronesiadevelopment.microstates;
 
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
 
 public class StateCommandHandler implements CommandExecutor {
@@ -33,10 +27,10 @@ public class StateCommandHandler implements CommandExecutor {
 
                 if(sender.hasPermission("states.admin")){
                     if (!State.stateExsistsOnDisk(state_name)) {
-                        Player owner = Bukkit.getPlayerExact(args[2]);
+                        String owner = args[2];
 
                         //Hehe lets get this boi going. This sets up some values that needs to be set.
-                        newstate.setOwner(owner.getUniqueId());
+                        newstate.setOwner(Worker.getUUIDString(owner));
                         newstate.changeName(state_name);
                         newstate.setUpState();
                         sender.sendMessage(ChatColor.BLUE + "[MicroStates] " + ChatColor.WHITE + "Registered State: " + state_name);
