@@ -14,6 +14,7 @@ public class Worker {
     public static void setPlayerUuidData(Player player) {
         MicroStates.getInstance().uuid.set(player.getUniqueId().toString(), player.getName());
         MicroStates.getInstance().uuid.set(player.getName().toLowerCase(), player.getUniqueId().toString());
+        MicroStates.getInstance().SaveUUIDFile();
     }
 
 }
